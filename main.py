@@ -22,7 +22,18 @@ class InternetSpeedXBot:
 
 
     def get_internet_speed(self):
-        pass
+                self.driver.get(URL_SPEED_TEST)
+        go = self.driver.find_element(By.CLASS_NAME, "js-start-test")
+        go.click()
+
+
+          # wait up to 10 seconds
+
+        speed = self.wait.until(
+            lambda d: d.find_element(By.CLASS_NAME, "download-speed").text != "—"
+        )
+        # speeds = self.driver.find_element(By.CLASS_NAME, "download-speed")
+        print(speed)
 
     def tweet_at_provider(self):
         pass
